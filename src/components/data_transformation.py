@@ -24,7 +24,7 @@ class DataTransformation:
 
     def get_data_transformer_object(self):
         '''
-        This function si responsible for data trnasformation
+        This function is responsible for data trnasformation
         
         '''
         try:
@@ -41,18 +41,15 @@ class DataTransformation:
                 steps=[
                 ("imputer",SimpleImputer(strategy="median")),
                 ("scaler",StandardScaler())
-
                 ]
             )
 
             cat_pipeline=Pipeline(
-
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
                 ("one_hot_encoder",OneHotEncoder()),
                 ("scaler",StandardScaler(with_mean=False))
                 ]
-
             )
 
             logging.info(f"Categorical columns: {categorical_columns}")
@@ -62,10 +59,7 @@ class DataTransformation:
                 [
                 ("num_pipeline",num_pipeline,numerical_columns),
                 ("cat_pipelines",cat_pipeline,categorical_columns)
-
                 ]
-
-
             )
 
             return preprocessor
